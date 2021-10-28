@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Kohl Tip",
+  "description": "Tip Bernds for their intelectual contributions",
+  "homepage_url": "http://github.com",
+  "version": "1.0",
+  "icons": {
+    "48": "icon/kohl-48.png",
+    "96": "icon/kohl-96.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.kohlchan.net/*"],
+      "js": ["./tipper.js"]
+    }
+  ]
+}
