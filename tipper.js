@@ -23,12 +23,15 @@ function addTipButtons() {
 }
 
 window.onload = (evt) => {
-  addTipButtons()
-  const posts = document.getElementsByClassName("divPosts")[0]
-  const observer = new MutationObserver((mutationList, observer) => {
-    console.log("mutation")
+  setTimeout(() => {
+    console.log("Transforming")
     addTipButtons()
-  })
-  observer.observe(posts, {childList: true, attributes: false})
+    const posts = document.getElementsByClassName("divPosts")[0]
+    const observer = new MutationObserver((mutationList, observer) => {
+      console.log("mutation")
+      addTipButtons()
+    })
+    observer.observe(posts, {childList: true, attributes: false})
+  }, 2000)
 }
 
