@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["https://kohlchan.net/*"],
-      "js": ["contract_abi.js", "./tipper.js"],
+      "js": ["./html_transformer.js"],
       "run_at": "document_idle"
     }
   ],
