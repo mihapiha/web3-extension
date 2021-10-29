@@ -11,8 +11,9 @@
 
   "content_scripts": [
     {
-      "matches": ["https://*.kohlchan.net/*"],
-      "js": ["./tipper.js"]
+      "matches": ["https://kohlchan.net/*"],
+      "js": ["web3js/dist/web3.min.js", "./tipper.js"],
+      "run_at": "document_idle"
     }
   ]
 }

@@ -16,22 +16,22 @@ function addTipButtons() {
     if(addr.startsWith("0x")) {
       const btn = document.createElement('button')
 	  btn.innerText = "Tip"
-	  btn.addEventListener('click', () => {tipKohl(addr)})
+	  btn.addEventListener('click', (evt) => {
+        evt.preventDefault()
+        tipKohl(addr)
+      })
 	  s.replaceWith(btn)
     }
   }
 }
 
-window.onload = (evt) => {
-  setTimeout(() => {
-    console.log("Transforming")
-    addTipButtons()
-    const posts = document.getElementsByClassName("divPosts")[0]
-    const observer = new MutationObserver((mutationList, observer) => {
-      console.log("mutation")
-      addTipButtons()
-    })
-    observer.observe(posts, {childList: true, attributes: false})
-  }, 2000)
-}
+
+console.log("Transforming")
+addTipButtons()
+const posts = document.getElementsByClassName("divPosts")[0]
+const observer = new MutationObserver((mutationList, observer) => {
+  console.log("mutation")
+  addTipButtons()
+})
+observer.observe(posts, {childList: true, attributes: false})
 
