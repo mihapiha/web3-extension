@@ -11,15 +11,16 @@ function tipKohl(address) {
       const web3 = new Web3(window.ethereum)
       const contract = new web3.eth.Contract(KOHL_CONTRACT_ABI)
       
-      const data = contract.methods.transferFrom(ethereum.selectedAddress, address, 1945).encodeABI()
+      const data = contract.methods.transfer(address, 1945).encodeABI()
 
+      console.log("Tipping from: " + ethereum.selectedAddress)
       return ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
           nonce: '0x00', // ignored by MetaMask
           to: KOHL_CONTRACT,
           from: ethereum.selectedAddress, // must match user's active address.
-          value: '0x00', // Only required to send ether to the recipient from the initiating external account.
+          value: '0x00',
           data: data
         }],
       })
@@ -41,10 +42,9 @@ function tipKohlTest(address) {
   console.log(address)
 }
 
-console.log("Loaded page script")
+console.log("KOHL: loaded page script")
 window.addEventListener("message", (event) => {
   if (event.data.type && (event.data.type == "KOHL_TIP")) {
-    console.log("Page received: " + event.data.address);
-    tipKohlTest(event.data.address)
+    tipKohl(event.data.address)
   }
 }, false);
