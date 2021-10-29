@@ -1,0 +1,3 @@
+[submodule "web3js"]
+	path = web3js
+	url = https://github.com/ChainSafe/web3.js.git
