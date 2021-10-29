@@ -35,3 +35,17 @@ const observer = new MutationObserver((mutationList, observer) => {
 })
 observer.observe(posts, {childList: true, attributes: false})
 
+
+function injectScript(file, node) {
+    var th = document.getElementsByTagName(node)[0];
+    var s = document.createElement('script');
+    s.setAttribute('type', 'text/javascript');
+    s.setAttribute('src', file);
+    th.appendChild(s);
+}
+
+injectScript( chrome.extension.getURL('web3js/dist/web3.min.js'), 'body');
+injectScript( chrome.extension.getURL('contract_abi.js'), 'body');
+injectScript( chrome.extension.getURL('tipping_logic.js'), 'body');
+
+

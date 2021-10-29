@@ -12,8 +12,9 @@
   "content_scripts": [
     {
       "matches": ["https://kohlchan.net/*"],
-      "js": ["web3js/dist/web3.min.js", "./tipper.js"],
+      "js": ["contract_abi.js", "./tipper.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "web_accessible_resources": ["web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js"]
 }
