@@ -61,6 +61,7 @@ function injectScript(file, node) {
     th.appendChild(s);
 }
 
+injectScript( chrome.extension.getURL('bn/lib/bn.js'), 'body');
 injectScript( chrome.extension.getURL('web3js/dist/web3.min.js'), 'body');
 injectScript( chrome.extension.getURL('contract_abi.js'), 'body');
 injectScript( chrome.extension.getURL('tipping_logic.js'), 'body');

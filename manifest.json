@@ -26,5 +26,5 @@
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": ["web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js"]
+  "web_accessible_resources": ["bn/lib/bn.js", "web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js"]
 }

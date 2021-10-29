@@ -3,6 +3,8 @@ function tipKohl(address) {
     console.log("No wallet!")
     return
   }
+  
+  const KohlCoinMul = new BN("1000000000000000000", 10)  
 
   console.log("Tipping " +  address)
   ethereum.request({ method: 'eth_requestAccounts' })
@@ -10,8 +12,9 @@ function tipKohl(address) {
       const account = accounts[0]
       const web3 = new Web3(window.ethereum)
       const contract = new web3.eth.Contract(KOHL_CONTRACT_ABI)
+      const amount = new BN(1945).imul(KohlCoinMul)
       
-      const data = contract.methods.transfer(address, 1945).encodeABI()
+      const data = contract.methods.transfer(address, amount).encodeABI()
 
       console.log("Tipping from: " + ethereum.selectedAddress)
       return ethereum.request({
