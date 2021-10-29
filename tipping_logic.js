@@ -1,3 +1,5 @@
+var kohlCoinAmount = 1337
+
 function tipKohl(address) {
   if(typeof window.ethereum === 'undefined') {
     console.log("No wallet!")
@@ -12,7 +14,7 @@ function tipKohl(address) {
       const account = accounts[0]
       const web3 = new Web3(window.ethereum)
       const contract = new web3.eth.Contract(KOHL_CONTRACT_ABI)
-      const amount = new BN(1945).imul(KohlCoinMul)
+      const amount = new BN(kohlCoinAmount, 10).imul(KohlCoinMul)
       
       const data = contract.methods.transfer(address, amount).encodeABI()
 
@@ -49,6 +51,9 @@ console.log("KOHL: loaded page script")
 window.addEventListener("message", (event) => {
   if (event.data.type && (event.data.type == "KOHL_TIP")) {
     tipKohl(event.data.address)
+  } else if (event.data.type && (event.data.type == "KOHL_AMOUNT")) {
+    kohlCoinAmount = event.data.amount
+    console.log("New amount " + kohlCoinAmount)
   }
 }, false);
 

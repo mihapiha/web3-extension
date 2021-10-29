@@ -43,6 +43,13 @@ window.addEventListener("message", (event) => {
   }
 }, false);
 
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log("Relaying amount " + request.value)
+    window.postMessage({type: "KOHL_AMOUNT", amount: request.value}) 
+  }
+)
+
 addTipButtons()
 addAddressButton()
 const posts = document.getElementsByClassName("divPosts")[0]
