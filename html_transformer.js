@@ -1,21 +1,16 @@
 function addTipButtons() {
-  const subjects = document.getElementsByClassName("labelSubject")
-  for(i=0; i<subjects.length; i++) {
-    console.log("Replacing " + i)
-    const s = subjects[i];
-    const addr = s.innerText 
-    if(addr.startsWith("0x")) {
+  const subjects = document.getElementsByClassName("tipping")
+  for(let s of subjects) {
+    const btn = document.createElement('button')
+	btn.innerText = "Tip₭"
+    
+	btn.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      console.log("Sending event")
+      window.postMessage({type: "KOHL_TIP", address: s.getAttribute("address")})
+    })
       
-      const btn = document.createElement('button')
-	  btn.innerText = "Tip"
-	  btn.addEventListener('click', (evt) => {
-        evt.preventDefault()
-        console.log("Sending event")
-        window.postMessage({type: "KOHL_TIP", address: addr})
-      })
-	  s.replaceWith(btn)
-      
-    }
+	s.replaceWith(btn)  
   }
 }
 
@@ -23,11 +18,12 @@ var kohlCoinAddress
 function addAddressButton() {
   const postBtnParent = document.getElementById("formButton").parentElement
   const insertAddrBtn = document.createElement('button')
-  const msg = document.getElementById("fieldMessage")
+  const subject = document.getElementById("fieldSubject")
+  
   insertAddrBtn.innerText = "Add Address"
   insertAddrBtn.addEventListener('click', (evt) => {
     evt.preventDefault()
-    msg.value = kohlCoinAddress + "\n" + msg.value
+    subject.value = kohlCoinAddress
   })
 
   postBtnParent.appendChild(insertAddrBtn)
