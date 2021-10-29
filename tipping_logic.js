@@ -48,3 +48,13 @@ window.addEventListener("message", (event) => {
     tipKohl(event.data.address)
   }
 }, false);
+
+ethereum.request({ method: 'eth_requestAccounts' })
+  .then((accounts) => {
+    const account = accounts[0]
+    window.postMessage({type: "KOHL_ADDR", address: account})
+  })
+  .catch((err) => {
+    console.log("error getting wallet")
+    console.log(err)
+  })

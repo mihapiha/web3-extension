@@ -19,9 +19,36 @@ function addTipButtons() {
   }
 }
 
+var kohlCoinAddress
+function addAddressButton() {
+  const postBtnParent = document.getElementById("formButton").parentElement
+  const insertAddrBtn = document.createElement('button')
+  const msg = document.getElementById("fieldMessage")
+  insertAddrBtn.innerText = "Add Address"
+  insertAddrBtn.addEventListener('click', (evt) => {
+    evt.preventDefault()
+    msg.value = kohlCoinAddress + "\n" + msg.value
+  })
+
+  postBtnParent.appendChild(insertAddrBtn)
+}
+
 
 console.log("Transforming")
+
+window.addEventListener("message", (event) => {
+  // We only accept messages from ourselves
+  if (event.source != window) {
+    return;
+  }
+
+  if (event.data.type && (event.data.type == "KOHL_ADDR")) {
+    kohlCoinAddress = event.data.address
+  }
+}, false);
+
 addTipButtons()
+addAddressButton()
 const posts = document.getElementsByClassName("divPosts")[0]
 const observer = new MutationObserver((mutationList, observer) => {
   console.log("mutation")
