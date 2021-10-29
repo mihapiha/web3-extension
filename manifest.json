@@ -8,7 +8,17 @@
     "48": "icon/kohl-48.png",
     "96": "icon/kohl-96.png"
   },
-
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon/kohl-16.png",
+      "32": "icon/kohl-32.png",
+      "48": "icon/kohl-48.png",
+      "96": "icon/kohl-96.png",
+      "128": "icon/kohl-128.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["https://kohlchan.net/*"],
