@@ -5,8 +5,9 @@ This is a browser extension for tipping [KohlCoin](https://kohlcoin.net/) on the
 It was developed and tested on Chromium browser with [MetaMask](https://metamask.io/) ethereum wallet installed.
 
 ## Installing
-1. clone repository `git clone --recurse-submodules https://gitgud.io/kohltip/kohltip.git`
-1. in Chrome go to: `chrome://extensions`
-1. enable developer mode
-1. click _Load unpacked_ and select the project directory
-1. tip some Bernds
+1a. **NOOBS** download and unzip https://anonfiles.com/9bN639R9ub/kohltip_zip
+1b. **GIT** clone repository `git clone --recurse-submodules https://gitgud.io/kohltip/kohltip.git`
+2. in Chrome go to: `chrome://extensions`
+3. enable developer mode
+4. click _Load unpacked_ and select the project directory
+5. tip some Bernds
