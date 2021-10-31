@@ -16,7 +16,12 @@ function addTipButtons() {
 
 var kohlCoinAddress
 function addAddressButton() {
-  const postBtnParent = document.getElementById("formButton").parentElement
+  const postBtn = document.getElementById("formButton")
+  if(postBtn === null) {
+    console.log("No post button")
+    return
+  }
+  const postBtnParent = postBtn.parentElement
   const insertAddrBtn = document.createElement('button')
   const subject = document.getElementById("fieldSubject")
   
@@ -27,6 +32,19 @@ function addAddressButton() {
   })
 
   postBtnParent.appendChild(insertAddrBtn)
+}
+
+function setObserver() {
+  const posts = document.getElementsByClassName("divPosts")[0]
+  if(posts === null || posts === undefined) {
+    console.log("No posts to observe")
+    return
+  }
+  const observer = new MutationObserver((mutationList, observer) => {
+    console.log("mutation")
+    addTipButtons()
+  })
+  observer.observe(posts, {childList: true, attributes: false})
 }
 
 
@@ -50,14 +68,10 @@ chrome.runtime.onMessage.addListener(
   }
 )
 
+
 addTipButtons()
 addAddressButton()
-const posts = document.getElementsByClassName("divPosts")[0]
-const observer = new MutationObserver((mutationList, observer) => {
-  console.log("mutation")
-  addTipButtons()
-})
-observer.observe(posts, {childList: true, attributes: false})
+setObserver()
 
 
 function injectScript(file, node) {
