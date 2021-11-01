@@ -1,5 +1,5 @@
-function addTipButtons() {
-  const subjects = document.getElementsByClassName("tipping")
+function addTipButtons(rootEl) {
+  const subjects = rootEl.getElementsByClassName("tipping")
   for(let s of subjects) {
     const btn = document.createElement('button')
 	btn.innerText = "Tip₭"
@@ -40,10 +40,16 @@ function setObserver() {
     console.log("No posts to observe")
     return
   }
+  
   const observer = new MutationObserver((mutationList, observer) => {
     console.log("mutation")
-    addTipButtons()
+    for(const mutation of mutationList) {
+      for(const postCell of mutation.addedNodes) {
+        addTipButtons(postCell)
+      }
+    }
   })
+  
   observer.observe(posts, {childList: true, attributes: false})
 }
 
@@ -69,7 +75,7 @@ chrome.runtime.onMessage.addListener(
 )
 
 
-addTipButtons()
+addTipButtons(document)
 addAddressButton()
 setObserver()
 
