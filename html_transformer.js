@@ -1,21 +1,30 @@
+var kohlCoinAddress = "No address!"
+var addressDefaultChecked = true
+var tipAmount = 1337
+
 function addTipButtons(rootEl) {
   const subjects = rootEl.getElementsByClassName("tipping")
   for(let s of subjects) {
+    const span = document.createElement('span')
+    const tipIn = document.createElement('input')
+    tipIn.setAttribute("type", "number")
+    tipIn.setAttribute("value", tipAmount)
     const btn = document.createElement('button')
 	btn.innerText = "Tip₭"
+
+    span.appendChild(tipIn)
+    span.appendChild(btn)
     
 	btn.addEventListener('click', (evt) => {
       evt.preventDefault()
       console.log("Sending event")
-      window.postMessage({type: "KOHL_TIP", address: s.getAttribute("address")})
+      window.postMessage({type: "KOHL_TIP", address: s.getAttribute("address"), amount: tipIn.value})
     })
       
-	s.replaceWith(btn)  
+	s.replaceWith(span)  
   }
 }
 
-var kohlCoinAddress
-var addressDefaultChecked = true
 function addAddressButton() {
   const postBtn = document.getElementById("formButton")
   if(postBtn === null) {
@@ -73,8 +82,8 @@ window.addEventListener("message", (event) => {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log("Relaying amount " + request.value)
-    window.postMessage({type: "KOHL_AMOUNT", amount: request.value}) 
+    console.log("Settomg amount " + request.value)
+    tipAmount = request.value
   }
 )
 

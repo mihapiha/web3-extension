@@ -1,6 +1,4 @@
-var kohlCoinAmount = 1337
-
-function tipKohl(address) {
+function tipKohl(address, kohlCoinAmount) {
   if(typeof window.ethereum === 'undefined') {
     console.log("No wallet!")
     return
@@ -50,11 +48,8 @@ function tipKohlTest(address) {
 console.log("KOHL: loaded page script")
 window.addEventListener("message", (event) => {
   if (event.data.type && (event.data.type == "KOHL_TIP")) {
-    tipKohl(event.data.address)
-  } else if (event.data.type && (event.data.type == "KOHL_AMOUNT")) {
-    kohlCoinAmount = event.data.amount
-    console.log("New amount " + kohlCoinAmount)
-  }
+    tipKohl(event.data.address, event.data.amount)
+  } 
 }, false);
 
 ethereum.request({ method: 'eth_requestAccounts' })
