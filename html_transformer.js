@@ -15,6 +15,7 @@ function addTipButtons(rootEl) {
 }
 
 var kohlCoinAddress
+var addressDefaultChecked = true
 function addAddressButton() {
   const postBtn = document.getElementById("formButton")
   if(postBtn === null) {
@@ -22,16 +23,19 @@ function addAddressButton() {
     return
   }
   const postBtnParent = postBtn.parentElement
-  const insertAddrBtn = document.createElement('button')
+  const insertAddrChk = document.createElement('input')
+  insertAddrChk.setAttribute("type", "checkbox")
+  insertAddrChk.checked = addressDefaultChecked
   const subject = document.getElementById("fieldSubject")
   
-  insertAddrBtn.innerText = "Add Address"
-  insertAddrBtn.addEventListener('click', (evt) => {
+  postBtn.addEventListener('click', (evt) => {
     evt.preventDefault()
-    subject.value = kohlCoinAddress
+    if(insertAddrChk.checked) {
+      subject.value = kohlCoinAddress
+    }
   })
 
-  postBtnParent.appendChild(insertAddrBtn)
+  postBtnParent.appendChild(insertAddrChk)
 }
 
 function setObserver() {
