@@ -9,6 +9,7 @@ function addTipButtons(rootEl) {
     const tipIn = document.createElement('input')
     tipIn.setAttribute("type", "number")
     tipIn.setAttribute("value", tipAmount)
+    tipIn.className = "kohltip"
     const btn = document.createElement('button')
 	btn.innerText = "Tip₭"
 
@@ -84,6 +85,9 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log("Settomg amount " + request.value)
     tipAmount = request.value
+    for(const input of document.querySelectorAll("input.kohltip")) {
+      input.value = tipAmount
+    }
   }
 )
 
