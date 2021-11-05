@@ -26,8 +26,8 @@ function addTipButtons(rootEl) {
   }
 }
 
-function addAddressButton() {
-  const postBtn = document.getElementById("formButton")
+function addAddressCheckbox(buttonId, fieldId) {
+  const postBtn = document.getElementById(buttonId)
   if(postBtn === null) {
     console.log("No post button")
     return
@@ -36,7 +36,7 @@ function addAddressButton() {
   const insertAddrChk = document.createElement('input')
   insertAddrChk.setAttribute("type", "checkbox")
   insertAddrChk.checked = addressDefaultChecked
-  const subject = document.getElementById("fieldSubject")
+  const subject = document.getElementById(fieldId)
   
   postBtn.addEventListener('click', (evt) => {
     evt.preventDefault()
@@ -93,7 +93,8 @@ chrome.runtime.onMessage.addListener(
 
 
 addTipButtons(document)
-addAddressButton()
+addAddressCheckBox("formButton", "fieldSubject")
+addAddressCheckBox("qrbutton", "qrsubject")
 setObserver()
 
 
