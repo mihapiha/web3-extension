@@ -23,9 +23,10 @@
     {
       "matches": ["https://kohlchan.net/*"],
       "js": ["./html_transformer.js"],
+      "css": ["./web_style.css"],
       "run_at": "document_idle",
       "all_frames": true
     }
   ],
-  "web_accessible_resources": ["bn/lib/bn.js", "web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js"]
+  "web_accessible_resources": ["bn/lib/bn.js", "web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js", "icon/kohl-k2-32.png"]
 }

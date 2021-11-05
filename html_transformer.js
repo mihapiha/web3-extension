@@ -2,19 +2,31 @@ var kohlCoinAddress = "No address!"
 var addressDefaultChecked = true
 var tipAmount = 1337
 
+function resizeInput() {
+  this.style.width = this.value.length + 3 + "ch"
+}
+
 function addTipButtons(rootEl) {
   const subjects = rootEl.getElementsByClassName("tipping")
   for(let s of subjects) {
     const span = document.createElement('span')
+    span.className = "kohltip"
     const tipIn = document.createElement('input')
     tipIn.setAttribute("type", "number")
     tipIn.setAttribute("value", tipAmount)
     tipIn.className = "kohltip"
+    resizeInput.call(tipIn)
+    tipIn.addEventListener('input', resizeInput)
     const btn = document.createElement('button')
-	btn.innerText = "Tip₭"
-
-    span.appendChild(tipIn)
+	btn.innerText = "Tip"
+    btn.className = "kohltip"
+    const img = document.createElement('img')
+    img.src = chrome.extension.getURL("icon/kohl-k2-32.png");
+    img.className = "kohltip"
+    
     span.appendChild(btn)
+    span.appendChild(tipIn)
+    span.appendChild(img)
     
 	btn.addEventListener('click', (evt) => {
       evt.preventDefault()
@@ -93,8 +105,8 @@ chrome.runtime.onMessage.addListener(
 
 
 addTipButtons(document)
-addAddressCheckBox("formButton", "fieldSubject")
-addAddressCheckBox("qrbutton", "qrsubject")
+addAddressCheckbox("formButton", "fieldSubject")
+addAddressCheckbox("qrbutton", "qrsubject")
 setObserver()
 
 

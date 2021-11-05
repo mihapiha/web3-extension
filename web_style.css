@@ -1,0 +1,26 @@
+input.kohltip {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+  background: transparent;
+}
+
+input.kohltip:focus {
+  border-color: green
+}
+
+span.kohltip {
+    background: #6c7aa5;
+    border: #6c7aa5;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 0.15rem;
+    padding: 0 0 0.1rem;
+    align-items: center;
+    display: inline-block;
+}
+
+img.kohltip {
+    height: 2ch;
+    vertical-align: bottom;
+}
