@@ -18,9 +18,44 @@ span.kohltip {
     padding: 0 0 0.1rem;
     align-items: center;
     display: inline-block;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
+}
+
+span.kohltip.kohltip-address {
+    margin-left: 1rem;
+    text-align: center;
+    display: inline;
 }
 
 img.kohltip {
     height: 2ch;
     vertical-align: bottom;
+}
+
+img.kohltip.kohltip-address {
+    vertical-align: middle;
+}
+
+img.img-kohl-clickable {
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
+    border-radius: 6rem;
+}
+
+.btn-kohltip.kohltip {
+    background-color: #8fac82;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
+    border-radius: 3px;
+
+    display: inline;
+    color: black;
+    font-size: small;
+    font-weight: initial;
+    padding: 0.15rem;
+    margin-right: 1ch;
+    cursor: pointer;
+}
+
+input.kohltip-address {
+    vertical-align: middle;
 }

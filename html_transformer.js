@@ -17,21 +17,34 @@ function addTipButtons(rootEl) {
     tipIn.className = "kohltip"
     resizeInput.call(tipIn)
     tipIn.addEventListener('input', resizeInput)
-    const btn = document.createElement('button')
+    const btn = document.createElement('div')
 	btn.innerText = "Tip"
-    btn.className = "kohltip"
+    btn.className = "btn-kohltip kohltip"
     const img = document.createElement('img')
     img.src = chrome.extension.getURL("icon/kohl-k2-32.png");
-    img.className = "kohltip"
+    img.className = "kohltip img-kohl-clickable"
+    const spanTxt = document.createElement('span')
+    spanTxt.innerText = s.getAttribute("address")
+    spanTxt.style.display = "none"
     
     span.appendChild(btn)
     span.appendChild(tipIn)
     span.appendChild(img)
+    span.appendChild(spanTxt)
     
 	btn.addEventListener('click', (evt) => {
       evt.preventDefault()
       console.log("Sending event")
       window.postMessage({type: "KOHL_TIP", address: s.getAttribute("address"), amount: tipIn.value})
+    })
+
+    img.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      if(spanTxt.style.display == "none") {
+        spanTxt.style.display = "inline"
+      } else {
+        spanTxt.style.display = "none"
+      }
     })
       
 	s.replaceWith(span)  
@@ -45,11 +58,24 @@ function addAddressCheckbox(buttonId, fieldId) {
     return
   }
   const postBtnParent = postBtn.parentElement
+
+  const span = document.createElement('span')
+  span.className = "kohltip kohltip-address"
+  const img = document.createElement('img')
+  img.src = chrome.extension.getURL("icon/kohl-k2-32.png");
+  img.className = "kohltip kohltip-address"
   const insertAddrChk = document.createElement('input')
   insertAddrChk.setAttribute("type", "checkbox")
   insertAddrChk.checked = addressDefaultChecked
-  const subject = document.getElementById(fieldId)
+  insertAddrChk.className = "kohltip-address"
+  const spanTxt = document.createElement('span')
+  spanTxt.innerText = "address"
+
+  span.appendChild(img)
+  span.appendChild(spanTxt)
+  span.appendChild(insertAddrChk)
   
+  const subject = document.getElementById(fieldId)
   postBtn.addEventListener('click', (evt) => {
     evt.preventDefault()
     if(insertAddrChk.checked) {
@@ -57,7 +83,7 @@ function addAddressCheckbox(buttonId, fieldId) {
     }
   })
 
-  postBtnParent.appendChild(insertAddrChk)
+  postBtnParent.appendChild(span)
 }
 
 function setObserver() {
