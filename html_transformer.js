@@ -160,7 +160,7 @@ function injectScript(file, node) {
 
 injectScript( chrome.extension.getURL('libs/bn/lib/bn.js'), 'body');
 injectScript( chrome.extension.getURL('libs/web3js/dist/web3.min.js'), 'body');
-injectScript( chrome.extension.getURL('contract_abi.js'), 'body');
-injectScript( chrome.extension.getURL('tipping_logic.js'), 'body');
+injectScript( chrome.extension.getURL('src/page_scripts/contract_abi.js'), 'body');
+injectScript( chrome.extension.getURL('src/page_scripts/tipping_logic.js'), 'body');
 
 
