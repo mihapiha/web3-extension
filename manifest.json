@@ -28,5 +28,5 @@
       "all_frames": true
     }
   ],
-  "web_accessible_resources": ["bn/lib/bn.js", "web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js", "icon/kohl-k2-32.png"]
+  "web_accessible_resources": ["libs/bn/lib/bn.js", "libs/web3js/dist/web3.min.js", "contract_abi.js", "tipping_logic.js", "icon/kohl-k2-32.png"]
 }
