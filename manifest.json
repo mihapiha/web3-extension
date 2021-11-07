@@ -22,8 +22,8 @@
   "content_scripts": [
     {
       "matches": ["https://kohlchan.net/*"],
-      "js": ["./html_transformer.js"],
-      "css": ["./web_style.css"],
+      "js": ["src/content_scripts/kohlchan/html_transformer.js"],
+      "css": ["src/content_scripts/web_style.css"],
       "run_at": "document_idle",
       "all_frames": true
     }
