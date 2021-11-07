@@ -1,6 +1,6 @@
 [submodule "web3js"]
-	path = web3js
+	path = libs/web3js
 	url = https://github.com/ChainSafe/web3.js.git
 [submodule "bn"]
-	path = bn
+	path = libs/bn
 	url = https://github.com/indutny/bn.js.git
