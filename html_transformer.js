@@ -106,6 +106,21 @@ function setObserver() {
 }
 
 
+function queryTipAmount() {
+  chrome.runtime.sendMessage({type: "KOHL_TIP_QUERY"}, function(response) {
+    if(chrome.runtime.lastError) {
+      setTimeout(queryTipAmount(), 1000);
+    } else {
+      tipAmount = response.value
+      for(const input of document.querySelectorAll("input.kohltip")) {
+        input.value = tipAmount
+      }
+    }
+  })
+}
+
+
+
 console.log("Transforming")
 
 window.addEventListener("message", (event) => {
@@ -129,12 +144,11 @@ chrome.runtime.onMessage.addListener(
   }
 )
 
-
 addTipButtons(document)
 addAddressCheckbox("formButton", "fieldSubject")
 addAddressCheckbox("qrbutton", "qrsubject")
 setObserver()
-
+queryTipAmount()
 
 function injectScript(file, node) {
     var th = document.getElementsByTagName(node)[0];
