@@ -107,14 +107,10 @@ function setObserver() {
 
 
 function queryTipAmount() {
-  chrome.runtime.sendMessage({type: "KOHL_TIP_QUERY"}, function(response) {
-    if(chrome.runtime.lastError) {
-      setTimeout(queryTipAmount(), 1000);
-    } else {
-      tipAmount = response.value
-      for(const input of document.querySelectorAll("input.kohltip")) {
-        input.value = tipAmount
-      }
+  chrome.runtime.sendMessage({type: "KOHL_TIP_QUERY"}, (response) => {
+    tipAmount = response.value
+    for(const input of document.querySelectorAll("input.kohltip")) {
+      input.value = tipAmount
     }
   })
 }
