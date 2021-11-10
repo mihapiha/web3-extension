@@ -42,7 +42,7 @@ img.img-kohl-clickable {
     border-radius: 6rem;
 }
 
-.btn-kohltip.kohltip {
+.btn-kohltip {
     background-color: #8fac82;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
     border-radius: 3px;
@@ -56,6 +56,17 @@ img.img-kohl-clickable {
     cursor: pointer;
 }
 
+.btn-kohltip:hover, .img-kohl-clickable:hover {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 40%), 0 3px 10px 0 rgb(0 0 0 / 40%);
+}
+
+
 input.kohltip-address {
     vertical-align: middle;
+}
+
+.wallet {
+    color: black;
+    font-size: small;
+    font-weight: initial;
 }

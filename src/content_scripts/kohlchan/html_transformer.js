@@ -19,12 +19,13 @@ function addTipButtons(rootEl) {
     tipIn.addEventListener('input', resizeInput)
     const btn = document.createElement('div')
 	btn.innerText = "Tip"
-    btn.className = "btn-kohltip kohltip"
+    btn.className = "btn-kohltip"
     const img = document.createElement('img')
     img.src = chrome.extension.getURL("icon/kohl-k2-32.png");
     img.className = "kohltip img-kohl-clickable"
     const spanTxt = document.createElement('span')
     spanTxt.innerText = s.getAttribute("address")
+    spanTxt.className = "wallet"
     spanTxt.style.display = "none"
     
     span.appendChild(btn)
