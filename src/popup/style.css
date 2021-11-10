@@ -1,0 +1,50 @@
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+  background: transparent;
+  width: 8ch;
+}
+
+input:focus {
+  border-color: green
+}
+
+.btn {
+    background-color: #8fac82;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
+    border-radius: 3px;
+
+    display: inline;
+    color: black;
+    font-size: small;
+    font-weight: initial;
+    padding: 0.15rem;
+    cursor: pointer;
+
+    margin-left: 2ch;
+}
+
+.btn:hover {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 40%), 0 3px 10px 0 rgb(0 0 0 / 40%);
+}
+
+.container {
+    display: flex;
+}
+
+span {
+    white-space: nowrap;
+    padding-top: 0.1rem;
+    margin-right: 2ch;
+}
+
+img {
+    height: 2ch;
+    vertical-align: bottom;
+}
+
+#donation {
+    margin-top: 1ch;
+    justify-content: space-between;
+}

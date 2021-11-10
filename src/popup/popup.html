@@ -4,8 +4,19 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <input minlength="12" type="number" id="tipValue" value="1337">
-    <button id="save">Save</button>
+    <div class="container">
+      <span>Tip amount: </span>
+      <div>
+        <input type="number" id="tipValue" value="1337">
+      </div>
+      <img id="cabbage-icon">
+      <div class="btn" id="save">Save</div>
+    </div>
+    <div class="container" id="donation">
+      <span>Thank with tip:</span>
+      <div class="btn" id="donate-dev">KohlTip</div>
+      <div class="btn" id="donate-helmut">KC</div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
