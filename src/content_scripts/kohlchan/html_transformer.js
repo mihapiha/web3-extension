@@ -1,3 +1,4 @@
+const rgx = /^0x[0-9a-fA-F]{40}/
 var kohlCoinAddress = "No address!"
 var addressDefaultChecked = true
 var tipAmount = 1337
@@ -7,8 +8,17 @@ function resizeInput() {
 }
 
 function addTipButtons(rootEl) {
-  const subjects = rootEl.getElementsByClassName("tipping")
+  const subjects = rootEl.getElementsByClassName("labelSubject")
   for(let s of subjects) {
+    let addr = ""
+    if(rgx.test(s.innerText)) {
+      addr = s.innerText
+    } else if(s.firstElementChild !== null && s.firstElementChild.hasAttribute("address")) {
+      addr = s.firstElementChild.getAttribute("address")
+    } else {
+      continue
+    }
+    
     const span = document.createElement('span')
     span.className = "kohltip"
     const tipIn = document.createElement('input')
@@ -24,7 +34,7 @@ function addTipButtons(rootEl) {
     img.src = chrome.extension.getURL("icon/kohl-k2-32.png");
     img.className = "kohltip img-kohl-clickable"
     const spanTxt = document.createElement('span')
-    spanTxt.innerText = s.getAttribute("address")
+    spanTxt.innerText = addr
     spanTxt.className = "wallet"
     spanTxt.style.display = "none"
     
@@ -36,7 +46,7 @@ function addTipButtons(rootEl) {
 	btn.addEventListener('click', (evt) => {
       evt.preventDefault()
       console.log("Sending event")
-      window.postMessage({type: "KOHL_TIP", address: s.getAttribute("address"), amount: tipIn.value})
+      window.postMessage({type: "KOHL_TIP", address: addr, amount: tipIn.value})
     })
 
     img.addEventListener('click', (evt) => {
