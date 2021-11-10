@@ -15,7 +15,7 @@ span.kohltip {
     border-style: solid;
     border-radius: 5px;
     border-width: 0.15rem;
-    padding: 0 0 0.1rem;
+    padding: 0.2rem 0px 0.1rem;
     align-items: center;
     display: inline-block;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%);
@@ -29,7 +29,7 @@ span.kohltip.kohltip-address {
 
 img.kohltip {
     height: 2ch;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 img.kohltip.kohltip-address {
@@ -64,6 +64,7 @@ img.img-kohl-clickable {
 input.kohltip-address {
     vertical-align: middle;
 }
+
 
 .wallet {
     color: black;
