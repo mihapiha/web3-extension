@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener(
 
       chrome.tabs.query({}, (tabs) => {
         tabs.forEach( (tab) => {
-          chrome.tabs.sendMessage(tab.id, {value: request.value})
+          chrome.tabs.sendMessage(tab.id, {type: "KOHL_TIP_AMOUNT", value: request.value})
         })  
       })
       

@@ -133,11 +133,20 @@ window.addEventListener("message", (event) => {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log("Settomg amount " + request.value)
-    tipAmount = request.value
-    for(const input of document.querySelectorAll("input.kohltip")) {
-      input.value = tipAmount
+
+    if(request.type === "KOHL_TIP_AMOUNT") {
+
+      console.log("Settomg amount " + request.value)
+      tipAmount = request.value
+      for(const input of document.querySelectorAll("input.kohltip")) {
+        input.value = tipAmount
+      }
+      
+    } else if (request.type === "KOHL_DONATE") {
+      if(window.top == window.self) //because scripts are also in iframes
+        window.postMessage({type: "KOHL_TIP", address: request.address, amount: tipAmount})
     }
+    
   }
 )
 
