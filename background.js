@@ -12,6 +12,9 @@ chrome.runtime.onMessage.addListener(
 
     if(request.type == "KOHL_TIP_QUERY") {
       sendResponse({value: localStorage.getItem("tipAmount")})
+
+      //sent only on start so we can show popup here
+      chrome.pageAction.show(sender.tab.id)
       
     } else if(request.type == "KOHL_TIP_AMOUNT") {
       localStorage.setItem("tipAmount", request.value)
