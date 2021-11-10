@@ -126,7 +126,12 @@ function queryTipAmount() {
   })
 }
 
-
+function foreverTransform() {
+  setTimeout(() => {
+    addTipButtons(document)
+    foreverTransform()
+  }, 5000)
+}
 
 console.log("Transforming")
 
@@ -161,6 +166,7 @@ chrome.runtime.onMessage.addListener(
 )
 
 addTipButtons(document)
+foreverTransform() //ugly solution but it works
 addAddressCheckbox("formButton", "fieldSubject")
 addAddressCheckbox("qrbutton", "qrsubject")
 setObserver()
