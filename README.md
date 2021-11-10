@@ -6,9 +6,10 @@ It was developed and tested on Chromium browser with [MetaMask](https://metamask
 
 ## Installing
 On first step choose **either** a) or b):
-- a) **NOOBS** download and unzip https://anonfiles.com/p0vcWbR0u2/kohltip_zip
+- a) **NOOBS** download kohltip.zip from *build* directory in this repository
 - b) **GIT** clone repository `git clone --recurse-submodules https://gitgud.io/kohltip/kohltip.git`
 - in Chrome go to: `chrome://extensions`
 - enable developer mode
 - click _Load unpacked_ and select the project directory
+- do not delete directory with extension!
 - tip some Bernds
