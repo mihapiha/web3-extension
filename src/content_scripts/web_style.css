@@ -61,7 +61,8 @@ img.img-kohl-clickable {
 }
 
 
-input.kohltip-address {
+input.kohltip-address.kohltip-address {
+    all: revert;
     vertical-align: middle;
 }
 

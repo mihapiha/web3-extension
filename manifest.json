@@ -29,6 +29,12 @@
       "css": ["src/content_scripts/web_style.css"],
       "run_at": "document_idle",
       "all_frames": true
+    },
+    {
+      "matches": ["https://slimkohl.kohlchan.net/*"],
+      "js": ["src/content_scripts/common.js","src/content_scripts/slimkohl/html_transformer.js"],
+      "css": ["src/content_scripts/web_style.css", "src/content_scripts/slimkohl/sk-style.css"],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
