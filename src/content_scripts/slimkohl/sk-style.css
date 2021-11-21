@@ -2,4 +2,10 @@ span.kohltip.kohltip-address {
     margin-left: 0;
     text-align: center;
     display: inline;
+    width: auto;
+}
+
+span.kohltip {
+    display: block;
+    width: max-content;
 }

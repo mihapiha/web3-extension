@@ -1,4 +1,21 @@
-const commonLogic = new CommonLogic()
+const commonLogic = new CommonLogic()  
+
+function addTipButtons(rootEl) {
+  const subjects = rootEl.getElementsByClassName("subject")
+  for(let s of subjects) {
+    let addr = ""
+    if(addressRgx.test(s.innerText)) {
+      addr = s.innerText
+    } else {
+      continue
+    }
+    
+    const span = commonLogic.getTipButton(addr)
+	s.replaceWith(span)  
+  }
+}
+
+
 
 window.addEventListener('APP-LOADED', () => {
   const newPost = document.getElementById("new-post-btn")
@@ -22,6 +39,26 @@ window.addEventListener('APP-LOADED', () => {
 
 })
 
+
+const observer = new MutationObserver((mutationList, observer) => {
+    console.log("mutation")
+    for(const mutation of mutationList) {
+      for(const postCell of mutation.addedNodes) {
+        addTipButtons(postCell)
+      }
+    }
+  })
+
+
 commonLogic.setup((tipAmount) => {
-  console.log("tip " + tipAmount)
+  for(const input of document.querySelectorAll("input.kohltip")) {
+    input.value = tipAmount
+  }
+})
+
+
+window.addEventListener('THREAD-DONE', () => {
+  addTipButtons(document)
+  observer.observe(document.getElementsByClassName("THREAD-PAGE")[0],
+                   {childList: true, attributes: false})
 })
