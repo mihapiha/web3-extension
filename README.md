@@ -11,3 +11,6 @@ It was developed and tested on Chromium browser with [MetaMask](https://metamask
 - click _Load unpacked_ and select the project directory
 - do not delete directory with extension!
 - tip some users :)
+
+## How it works
+Extenstion gets activated on predefined website and there acts as a bridge between Metamsk and host website. It works by injecting script to make the website Web3 enabled and it also changes its UI to enable blockchain tipping experience.
